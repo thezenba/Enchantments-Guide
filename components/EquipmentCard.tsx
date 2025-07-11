@@ -15,7 +15,7 @@ interface EquipmentCardProps {
 const tabStyles: Record<TabType, string> = {
   magical: 'bg-[rgba(74,144,226,0.1)] text-[#4a90e2]',
   plagued: 'bg-[rgba(142,124,195,0.1)] text-[#8e7cc3]',
-  downsides: 'bg-[rgba(208,2,27,0.1)] text-[#d0021b]',
+  downsides: 'bg-[rgba(208,2,27,0.1)] text-white',
 };
 
 const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipmentType, enchantments, tab, searchTerm, isMultiColumn }) => {
