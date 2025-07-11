@@ -36,7 +36,7 @@ export const highlightText = (text: string, searchTerm: string): string => {
     if (searchKeywords.length > 0) {
         searchKeywords.forEach(keyword => {
             if (keyword) {
-                const searchRegex = new RegExp(escapeRegex(keyword), 'gi');
+                const searchRegex = new RegExp(`\b${escapeRegex(keyword)}\b`, 'gi');
                 highlightedText = highlightedText.replace(searchRegex, (match) => `<span class="bg-[#fbbc04] text-black rounded-sm">${match}</span>`);
             }
         });
