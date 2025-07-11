@@ -1,3 +1,6 @@
+To use the guide enter in this link: 
+
+https://thezenba.github.io/Enchantments-Guide/
 ## Run Locally
 
 **Prerequisites:**  Node.js
