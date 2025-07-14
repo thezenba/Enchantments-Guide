@@ -4,6 +4,7 @@ import Header from './components/Header';
 import InfoSection from './components/InfoSection';
 import Controls from './components/Controls';
 import EnchantmentGrid from './components/EnchantmentGrid';
+import Footer from './components/Footer';
 import { enchantmentData } from './data/enchantments';
 import { EQUIPMENT_NAME_MAP } from './constants';
 import { TabType, EnchantmentType, EquipmentData, EquipmentType, Enchantment } from './types';
@@ -136,6 +137,7 @@ const App: React.FC = () => {
                 selectedEquipment={selectedEquipment} 
             />
         </main>
+        <Footer />
       </div>
     </div>
   );
