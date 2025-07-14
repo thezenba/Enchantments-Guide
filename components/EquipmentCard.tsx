@@ -42,7 +42,17 @@ const EquipmentCard: React.FC<EquipmentCardProps> = ({ equipmentType, enchantmen
       </ul>
       {tab === 'plagued' && downsides.length > 0 && (
         <div className="mt-2 rounded-lg bg-[rgba(208,2,27,0.08)] p-2">
-          <div className="text-[#d0021b] font-semibold mb-1 text-sm">Downsides</div>
+          <div className="relative group inline-block mb-1">
+            <span
+              className="text-[#d0021b] font-semibold text-sm cursor-help"
+              style={{ textShadow: '0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff' }}
+            >
+              Downsides
+            </span>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-2 bg-black text-white text-center rounded-md text-xs opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-lg border border-[#404040]">
+              Each 'plagued' item must have a 'cursed' enchantment (Downside)
+            </div>
+          </div>
           <ul className={`list-none p-0 ${isMultiColumn ? 'lg:columns-3 md:columns-2 columns-1 column-gap-6' : ''}`}>
             {downsides.map((enchant) => (
               <EnchantmentListItem key={enchant.id} enchantment={enchant} searchTerm={searchTerm} />
