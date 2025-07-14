@@ -1,7 +1,7 @@
 
 export type EnchantmentType = 'magicalEnchantments' | 'plaguedEnchantments' | 'plaguedDownsides';
 
-export type TabType = 'magical' | 'plagued' | 'downsides';
+export type TabType = 'magical' | 'plagued';
 
 export type EquipmentType = 'weapon' | 'shield' | 'bow' | 'helm' | 'armor' | 'pants' | 'gloves';
 

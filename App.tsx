@@ -34,38 +34,78 @@ const App: React.FC = () => {
   const tabToDataTypeMap: Record<TabType, EnchantmentType> = {
     magical: 'magicalEnchantments',
     plagued: 'plaguedEnchantments',
-    downsides: 'plaguedDownsides',
   };
 
   const filteredData = useMemo<EquipmentData>(() => {
-    const dataType = tabToDataTypeMap[activeTab];
-    const currentData = enchantmentData[dataType];
-    const searchKeywords = searchTerm.toLowerCase().split(',').map(k => k.trim()).filter(Boolean);
+    if (activeTab === 'plagued') {
+      // Juntar plaguedEnchantments e plaguedDownsides
+      const plagued = enchantmentData['plaguedEnchantments'];
+      const downsides = enchantmentData['plaguedDownsides'];
+      const searchKeywords = searchTerm.toLowerCase().split(',').map(k => k.trim()).filter(Boolean);
 
-    const dataToFilter = selectedEquipment === 'all'
-      ? currentData
-      : { [selectedEquipment]: currentData[selectedEquipment as EquipmentType] };
-      
-    const result: EquipmentData = {} as EquipmentData;
+      const equipmentTypes = selectedEquipment === 'all'
+        ? Object.keys(plagued)
+        : [selectedEquipment];
 
-    for (const eqType in dataToFilter) {
+      const result: EquipmentData = {} as EquipmentData;
+
+      for (const eqType of equipmentTypes) {
         const key = eqType as EquipmentType;
-        if (Object.prototype.hasOwnProperty.call(dataToFilter, key) && dataToFilter[key]) {
-            const enchantments = dataToFilter[key];
-            const filteredEnchantments = enchantments.filter((enchant: Enchantment) => {
-                const text = enchant.baseText.toLowerCase();
-                const textMatch = searchKeywords.length === 0 || searchKeywords.every(keyword => text.includes(keyword));
-                const groupMatch = selectedGroup === 'all' || enchant.group === selectedGroup;
-                const tagMatch = selectedTag === 'all' || enchant.tags.includes(selectedTag);
-                return textMatch && groupMatch && tagMatch;
-            });
-
-            if (filteredEnchantments.length > 0) {
-                result[key] = filteredEnchantments;
-            }
+        const plaguedEnchants = plagued[key] || [];
+        const plaguedDowns = downsides[key] || [];
+        // Filtrar positivos
+        const filteredPlagued = plaguedEnchants.filter((enchant: Enchantment) => {
+          const text = enchant.baseText.toLowerCase();
+          const textMatch = searchKeywords.length === 0 || searchKeywords.every(keyword => text.includes(keyword));
+          const groupMatch = selectedGroup === 'all' || enchant.group === selectedGroup;
+          const tagMatch = selectedTag === 'all' || enchant.tags.includes(selectedTag);
+          return textMatch && groupMatch && tagMatch;
+        });
+        // Filtrar downsides
+        const filteredDowns = plaguedDowns.filter((enchant: Enchantment) => {
+          const text = enchant.baseText.toLowerCase();
+          const textMatch = searchKeywords.length === 0 || searchKeywords.every(keyword => text.includes(keyword));
+          const groupMatch = selectedGroup === 'all' || enchant.group === selectedGroup;
+          const tagMatch = selectedTag === 'all' || enchant.tags.includes(selectedTag);
+          return textMatch && groupMatch && tagMatch;
+        });
+        // Juntar, downsides ao final
+        if (filteredPlagued.length > 0 || filteredDowns.length > 0) {
+          result[key] = [...filteredPlagued, ...filteredDowns.map(d => ({ ...d, isDownside: true }))];
         }
+      }
+      return result;
+    } else {
+      // Lógica original para magical
+      const dataType = tabToDataTypeMap[activeTab];
+      const currentData = enchantmentData[dataType];
+      const searchKeywords = searchTerm.toLowerCase().split(',').map(k => k.trim()).filter(Boolean);
+
+      const dataToFilter = selectedEquipment === 'all'
+        ? currentData
+        : { [selectedEquipment]: currentData[selectedEquipment as EquipmentType] };
+      
+      const result: EquipmentData = {} as EquipmentData;
+
+      for (const eqType in dataToFilter) {
+          const key = eqType as EquipmentType;
+          if (Object.prototype.hasOwnProperty.call(dataToFilter, key) && dataToFilter[key]) {
+              const enchantments = dataToFilter[key];
+              const filteredEnchantments = enchantments.filter((enchant: Enchantment) => {
+                  const text = enchant.baseText.toLowerCase();
+                  const textMatch = searchKeywords.length === 0 || searchKeywords.every(keyword => text.includes(keyword));
+                  const groupMatch = selectedGroup === 'all' || enchant.group === selectedGroup;
+                  const tagMatch = selectedTag === 'all' || enchant.tags.includes(selectedTag);
+                  return textMatch && groupMatch && tagMatch;
+              });
+
+              if (filteredEnchantments.length > 0) {
+                  result[key] = filteredEnchantments;
+              }
+          }
+      }
+      return result;
     }
-    return result;
   }, [activeTab, searchTerm, selectedEquipment, selectedGroup, selectedTag]);
 
   return (

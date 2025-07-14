@@ -26,7 +26,6 @@ interface ControlsProps {
 const tabConfig: { id: TabType; label: string; activeClass: string }[] = [
     { id: 'magical', label: 'Magical (Blue)', activeClass: 'bg-[#4a90e2] border-[#4a90e2] text-white' },
     { id: 'plagued', label: 'Plagued', activeClass: 'bg-[#8e7cc3] border-[#8e7cc3] text-white' },
-    { id: 'downsides', label: 'Downsides', activeClass: 'bg-[#d0021b] border-[#d0021b] text-white' },
 ];
 
 const Controls: React.FC<ControlsProps> = (props) => {
