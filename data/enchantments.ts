@@ -1,4 +1,3 @@
-
 import { FullEnchantmentData } from '../types';
 
 export const enchantmentData: FullEnchantmentData = {
@@ -6,7 +5,7 @@ export const enchantmentData: FullEnchantmentData = {
         weapon: [
             // --- Group: None ---
             { id: 101, group: "None", baseText: "Damage increased by {val1} for 30s after Backstab", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "on_backstab", "conditional"] },
-            { id: 102, group: "None", baseText: "Stagger Damage increased by {val1} for 20s after Backstab", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "stagger_damage" }], tags: ["stagger", "damage", "offensive", "on_backstab", "conditional"] },
+            { id: 102, group: "None", baseText: "Stagger Damage increased by {val1} for 30s after Backstab", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "stagger_damage" }], tags: ["stagger", "damage", "offensive", "on_backstab", "conditional"] },
             { id: 103, group: "None", baseText: "Stagger Damage increased by {val1} for 20s after Kill", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "stagger_damage" }], tags: ["stagger", "damage", "offensive", "on_kill", "conditional"] },
 
             // --- Group: A ---
@@ -41,7 +40,9 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 126, group: "H", baseText: "Healing increased by {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "healing_effectiveness" }], tags: ["health", "healing", "defensive", "durability_scaling", "persistent"] },
             
             // --- Group: K ---
-            { id: 127, group: "K", baseText: "Item Weight decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 3, max: 10, stat: "weight_reduction" }], tags: ["weight", "utility", "persistent"] }
+            { id: 127, group: "K", baseText: "Item Weight decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 3, max: 10, stat: "weight_reduction" }], tags: ["weight", "utility", "persistent"] },
+            // --- Group: B ---
+            { id: 128, group: "B", baseText: "Focus Gain increased by {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "focus_gain" }], tags: ["focus", "utility", "durability_scaling", "persistent"] },
         ],
         shield: [
             // --- Group: A ---
@@ -283,9 +284,9 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 804, group: "A", baseText: "Cold Infusion", values: [], tags: ["infusion", "elemental", "cold", "plagued"] },
             { id: 805, group: "A", baseText: "Lightning Infusion", values: [], tags: ["infusion", "elemental", "lightning", "plagued"] },
             { id: 806, group: "A", baseText: "Plague Infusion", values: [], tags: ["infusion", "elemental", "plague", "plagued"] },
-            { id: 807, group: "A", baseText: "Attack Speed increased by {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "attack_speed" }], tags: ["speed", "offensive", "durability_scaling", "persistent", "plagued"] },
+            { id: 807, group: "A", baseText: "Attack Speed increased by {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 7, max: 10, stat: "attack_speed" }], tags: ["speed", "offensive", "durability_scaling", "persistent", "plagued"] },
             { id: 808, group: "A", baseText: "Rune Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "rune_damage" }], tags: ["rune", "damage", "offensive", "persistent", "plagued"] },
-            { id: 809, group: "A", baseText: "Damage increased by {val1} at Full Focus", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "full_focus", "conditional", "plagued"] },
+            { id: 809, group: "A", baseText: "Damage increased by {val1} at Full Focus", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "damage" }], tags: ["damage", "offensive", "full_focus", "conditional", "plagued"] },
             { id: 810, group: "A", baseText: "Damage increased by {val1} while at Low Health", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "low_health", "conditional", "plagued"] },
             { id: 811, group: "A", baseText: "Damage increased by {val1} while at Full Health", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "full_health", "conditional", "plagued"] },
             { id: 812, group: "A", baseText: "Damage vs Large Enemies increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "conditional", "plagued"] },
@@ -312,17 +313,18 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 827, group: "D", baseText: "Indestructible", values: [], tags: ["durability", "utility", "persistent", "plagued"] },
             
             // --- Group: H ---
-            { id: 828, group: "H", baseText: "Healing increased by up to {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "healing_effectiveness" }], tags: ["health", "healing", "defensive", "durability_scaling", "persistent", "plagued"] },
+            { id: 828, group: "H", baseText: "Healing increased by up to {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 5, max: 15, stat: "healing_effectiveness" }], tags: ["health", "healing", "defensive", "durability_scaling", "persistent", "plagued"] },
             { id: 829, group: "H", baseText: "Gain {val1} Health on Kill", values: [{ key: "{val1}", type: "percentage", min: 5, max: 10, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_kill", "plagued"] },
             { id: 830, group: "H", baseText: "Gain {val1} Health on Staggering an Enemy", values: [{ key: "{val1}", type: "percentage", min: 5, max: 10, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_stagger", "plagued"] },
             { id: 831, group: "H", baseText: "Gain {val1} Health on Charged Attack", values: [{ key: "{val1}", type: "percentage", min: 2, max: 4, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_charged_attack", "plagued"] },
             { id: 832, group: "H", baseText: "Gain {val1} Health on Fatality", values: [{ key: "{val1}", type: "percentage", min: 5, max: 10, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_fatality", "plagued"] },
+            { id: 835, group: "H", baseText: "Gain {val1} Health on Damage Dealt against Frozen Enemies", values: [{ key: "{val1}", type: "percentage", min: 1, max: 2, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_damage", "conditional", "cold", "plagued"] },
             
             // --- Group: J ---
             { id: 833, group: "J", baseText: "Movement Speed increased by {val1} for 5s after Rune Attack", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "movement_speed" }], tags: ["movement", "speed", "on_rune_attack", "conditional", "plagued"] },
             
             // --- Group: K ---
-            { id: 834, group: "K", baseText: "Item Weight decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "weight_reduction" }], tags: ["weight", "utility", "persistent", "plagued"] }
+            { id: 834, group: "K", baseText: "Item Weight decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 3, max: 10, stat: "weight_reduction" }], tags: ["weight", "utility", "persistent", "plagued"] },
         ],
         shield: [
             // --- Group: None ---
