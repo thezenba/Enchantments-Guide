@@ -3,7 +3,7 @@ import React from 'react';
 const Footer: React.FC = () => (
   <footer className="w-full mt-8 py-4 border-t border-[#404040] text-center text-sm text-[#b3b3b3] bg-[#23272a]">
     <span>
-      Código fonte disponível em&nbsp;
+      Code available on&nbsp;
       <a
         href="https://github.com/thezenba/Enchantments-Guide"
         target="_blank"
