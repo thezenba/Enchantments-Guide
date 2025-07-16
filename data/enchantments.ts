@@ -26,7 +26,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 118, group: "A", baseText: "Cold Damage Infusion", values: [], tags: ["infusion", "elemental", "cold"] },
             { id: 119, group: "A", baseText: "Lightning Damage Infusion", values: [], tags: ["infusion", "elemental", "lightning"] },
             { id: 120, group: "A", baseText: "Plague Damage Infusion", values: [], tags: ["infusion", "elemental", "plague"] },
-            { id: 121, group: "A", baseText: "Attack damage increased by {val1} for 5s after Rune Attack", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "damage" }], tags: ["damage", "offensive", "on_rune_attack", "conditional"] },
+            { id: 121, group: "A", baseText: "Attack damage increased by {val1} for 10s after Rune Attack", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "damage" }], tags: ["damage", "offensive", "on_rune_attack", "conditional"] },
             { id: 122, group: "A", baseText: "Normal attack damage increased by {val1} for 4s after Charged Attack", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "damage" }], tags: ["damage", "offensive", "on_charged_attack", "conditional"] },
 
             // --- Group: C ---
