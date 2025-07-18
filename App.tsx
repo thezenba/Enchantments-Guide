@@ -6,7 +6,7 @@ import Controls from './components/Controls';
 import EnchantmentGrid from './components/EnchantmentGrid';
 import Footer from './components/Footer';
 import { enchantmentData } from './data/enchantments';
-import { EQUIPMENT_NAME_MAP } from './constants';
+import { EQUIPMENT_NAME_MAP, groupTitles } from './constants';
 import { TabType, EnchantmentType, EquipmentData, EquipmentType, Enchantment } from './types';
 
 const App: React.FC = () => {
@@ -23,7 +23,7 @@ const App: React.FC = () => {
     
     const groups = new Set<string>();
     allEnchantments.forEach(e => { if(e.group !== 'None') groups.add(e.group) });
-    const groupOpts = [{ value: 'all', label: 'All Groupings' }, ...Array.from(groups).sort().map(g => ({ value: g, label: g }))];
+    const groupOpts = [{ value: 'all', label: 'All Types' }, ...Array.from(groups).sort().map(g => ({ value: g, label: groupTitles[g] || g }))];
     
     const tags = new Set<string>();
     allEnchantments.forEach(e => e.tags.forEach(t => tags.add(t)));

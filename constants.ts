@@ -39,3 +39,27 @@ export const GROUP_BADGE_COLORS: Record<string, string> = {
     "J": "bg-[#f1d8ba]", "K": "bg-[#c28464]", "L": "bg-[#d13167]",
     "None": "bg-[#777] text-white"
 };
+
+export const groupTitles: Record<string, string> = {
+  A: "Damage",
+  B: "Focus",
+  C: "Stamina",
+  D: "Durability",
+  E: "Resistance",
+  H: "Health",
+  J: "Move Speed",
+  K: "Weight",
+  L: "Armor"
+};
+
+export const groupExplanations: Record<string, string> = {
+  A: "Damage - This group is predominantly focused on increasing damage in various ways. It includes direct damage bonuses, damage based on certain conditions (like durability or high focus), elemental damage, and effects that are triggered by performing offensive actions like killing or staggering.",
+  B: "Focus - Enchantments in this group are consistently related to the manipulation of 'Focus.' This includes increasing focus gain, reducing the focus cost of abilities, and gaining focus under specific conditions, such as parrying or blocking.",
+  C: "Stamina - This group concentrates on stamina-related improvements. It includes reducing the stamina cost for various actions (attacking, dodging), increasing stamina recovery, and gaining stamina in certain combat situations.",
+  D: "Durability - The enchantments here are all about item durability. They increase an item's maximum durability or provide a chance not to consume durability upon use. The 'Plagued' version of this group can even make an item indestructible.",
+  E: "Resistance - This group offers defensive enhancements, primarily focused on increasing resistances to various types of elemental damage (fire, ice, lightning, plague) and increasing stagger resistance.",
+  H: "Health - Enchantments in this group are related to health and survival. They include increasing maximum health, improving healing effectiveness, regenerating health, and gaining life through various actions (lifesteal).",
+  J: "Move Speed - This group is entirely dedicated to improvements in movement speed, offering persistent or conditional movement speed bonuses.",
+  K: "Weight - This group has a singular utility focus: reducing the item's weight, which can help with overall equipment load management.",
+  L: "Armor - This group is focused on reducing incoming damage. It includes enchantments that increase armor and decrease damage taken based on various conditions, such as durability, low health, or the number of nearby enemies."
+};

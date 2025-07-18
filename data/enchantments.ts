@@ -23,7 +23,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 115, group: "A", baseText: "Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 3, max: 10, stat: "damage" }], tags: ["damage", "offensive", "persistent"] },
             { id: 116, group: "A", baseText: "Rune Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "rune_damage" }], tags: ["rune", "damage", "offensive", "persistent"] },
             { id: 117, group: "A", baseText: "Heat Damage Infusion", values: [], tags: ["infusion", "elemental", "heat"] },
-            { id: 118, group: "A", baseText: "Cold Damage Infusion", values: [], tags: ["infusion", "elemental", "cold"] },
+            { id: 118, group: "A", baseText: "Ice Damage Infusion", values: [], tags: ["infusion", "elemental", "Ice"] },
             { id: 119, group: "A", baseText: "Lightning Damage Infusion", values: [], tags: ["infusion", "elemental", "lightning"] },
             { id: 120, group: "A", baseText: "Plague Damage Infusion", values: [], tags: ["infusion", "elemental", "plague"] },
             { id: 121, group: "A", baseText: "Attack damage increased by {val1} for 10s after Rune Attack", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "damage" }], tags: ["damage", "offensive", "on_rune_attack", "conditional"] },
@@ -76,7 +76,7 @@ export const enchantmentData: FullEnchantmentData = {
             // --- Group: A ---
             { id: 301, group: "A", baseText: "Damage increased by up to {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 3, max: 10, stat: "damage" }], tags: ["damage", "offensive", "durability_scaling", "persistent"] },
             { id: 302, group: "A", baseText: "Heat Damage Infusion", values: [], tags: ["infusion", "elemental", "heat"] },
-            { id: 303, group: "A", baseText: "Cold Damage Infusion", values: [], tags: ["infusion", "elemental", "cold"] },
+            { id: 303, group: "A", baseText: "Ice Damage Infusion", values: [], tags: ["infusion", "elemental", "Ice"] },
             { id: 304, group: "A", baseText: "Lightning Damage Infusion", values: [], tags: ["infusion", "elemental", "lightning"] },
             { id: 305, group: "A", baseText: "Plague Damage Infusion", values: [], tags: ["infusion", "elemental", "plague"] },
             { id: 306, group: "A", baseText: "Damage increased by {val1} if no Enemies nearby", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "damage" }], tags: ["damage", "offensive", "conditional", "ranged"] },
@@ -107,7 +107,7 @@ export const enchantmentData: FullEnchantmentData = {
 
             // --- Group: A ---
             { id: 402, group: "A", baseText: "Heat Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "heat_damage" }], tags: ["damage", "elemental", "heat", "offensive", "persistent"] },
-            { id: 403, group: "A", baseText: "Cold Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "cold_damage" }], tags: ["damage", "elemental", "cold", "offensive", "persistent"] },
+            { id: 403, group: "A", baseText: "Ice Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "Ice_damage" }], tags: ["damage", "elemental", "Ice", "offensive", "persistent"] },
             { id: 404, group: "A", baseText: "Lightning Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "lightning_damage" }], tags: ["damage", "elemental", "lightning", "offensive", "persistent"] },
             { id: 405, group: "A", baseText: "Plague Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "plague_damage" }], tags: ["damage", "elemental", "plague", "offensive", "persistent"] },
 
@@ -128,7 +128,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 415, group: "D", baseText: "Chance to ignore Durability Loss increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "durability_loss_ignore" }], tags: ["durability", "utility", "persistent"] },
 
             // --- Group: E ---
-            { id: 416, group: "E", baseText: "Cold Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "cold_resistance" }], tags: ["defense", "elemental", "cold", "resistance", "persistent"] },
+            { id: 416, group: "E", baseText: "Ice Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "Ice_resistance" }], tags: ["defense", "elemental", "Ice", "resistance", "persistent"] },
             { id: 417, group: "E", baseText: "Heat Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "heat_resistance" }], tags: ["defense", "elemental", "heat", "resistance", "persistent"] },
             { id: 418, group: "E", baseText: "Lightning Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "lightning_resistance" }], tags: ["defense", "elemental", "lightning", "resistance", "persistent"] },
             { id: 419, group: "E", baseText: "Plague Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "plague_resistance" }], tags: ["defense", "elemental", "plague", "resistance", "persistent"] },
@@ -158,7 +158,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 505, group: "D", baseText: "Chance to ignore Durability Loss increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "durability_loss_ignore" }], tags: ["durability", "utility", "persistent"] },
 
             // --- Group: E ---
-            { id: 506, group: "E", baseText: "Cold Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "cold_resistance" }], tags: ["defense", "elemental", "cold", "resistance", "persistent"] },
+            { id: 506, group: "E", baseText: "Ice Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "Ice_resistance" }], tags: ["defense", "elemental", "Ice", "resistance", "persistent"] },
             { id: 507, group: "E", baseText: "Heat Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "heat_resistance" }], tags: ["defense", "elemental", "heat", "resistance", "persistent"] },
             { id: 508, group: "E", baseText: "Lightning Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "lightning_resistance" }], tags: ["defense", "elemental", "lightning", "resistance", "persistent"] },
             { id: 509, group: "E", baseText: "Plague Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "plague_resistance" }], tags: ["defense", "elemental", "plague", "resistance", "persistent"] },
@@ -206,7 +206,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 613, group: "D", baseText: "Chance to ignore Durability Loss increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "durability_loss_ignore" }], tags: ["durability", "utility", "persistent"] },
 
             // --- Group: E ---
-            { id: 614, group: "E", baseText: "Cold Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "cold_resistance" }], tags: ["defense", "elemental", "cold", "resistance", "persistent"] },
+            { id: 614, group: "E", baseText: "Ice Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "Ice_resistance" }], tags: ["defense", "elemental", "Ice", "resistance", "persistent"] },
             { id: 615, group: "E", baseText: "Heat Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "heat_resistance" }], tags: ["defense", "elemental", "heat", "resistance", "persistent"] },
             { id: 616, group: "E", baseText: "Lightning Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "lightning_resistance" }], tags: ["defense", "elemental", "lightning", "resistance", "persistent"] },
             { id: 617, group: "E", baseText: "Plague Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "plague_resistance" }], tags: ["defense", "elemental", "plague", "resistance", "persistent"] },
@@ -235,7 +235,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 702, group: "A", baseText: "Physical Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "physical_damage" }], tags: ["damage", "physical", "offensive", "persistent"] },
             { id: 703, group: "A", baseText: "Burn Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "burn_buildup" }], tags: ["buildup", "elemental", "heat", "offensive", "persistent"] },
             { id: 704, group: "A", baseText: "Shock Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "shock_buildup" }], tags: ["buildup", "elemental", "lightning", "offensive", "persistent"] },
-            { id: 705, group: "A", baseText: "Freeze Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "freeze_buildup" }], tags: ["buildup", "elemental", "cold", "offensive", "persistent"] },
+            { id: 705, group: "A", baseText: "Freeze Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "freeze_buildup" }], tags: ["buildup", "elemental", "Ice", "offensive", "persistent"] },
             { id: 706, group: "A", baseText: "Infect Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 6, max: 20, stat: "infect_buildup" }], tags: ["buildup", "elemental", "plague", "offensive", "persistent"] },
             { id: 707, group: "A", baseText: "On Parry, deal {val1} of Weapon Damage", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "damage" }], tags: ["damage", "offensive", "on_parry"] },
             { id: 708, group: "A", baseText: "Damage increased by {val1} for 5s after Parry", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "damage" }], tags: ["damage", "offensive", "on_parry", "conditional"] },
@@ -255,7 +255,7 @@ export const enchantmentData: FullEnchantmentData = {
 
             // --- Group: E ---
             { id: 716, group: "E", baseText: "Heat Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "heat_resistance" }], tags: ["defense", "elemental", "heat", "resistance", "persistent"] },
-            { id: 717, group: "E", baseText: "Cold Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "cold_resistance" }], tags: ["defense", "elemental", "cold", "resistance", "persistent"] },
+            { id: 717, group: "E", baseText: "Ice Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "Ice_resistance" }], tags: ["defense", "elemental", "Ice", "resistance", "persistent"] },
             { id: 718, group: "E", baseText: "Lightning Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "lightning_resistance" }], tags: ["defense", "elemental", "lightning", "resistance", "persistent"] },
             { id: 719, group: "E", baseText: "Plague Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "plague_resistance" }], tags: ["defense", "elemental", "plague", "resistance", "persistent"] },
             { id: 720, group: "E", baseText: "Stagger Resistance increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "stagger_resistance" }], tags: ["defense", "stagger", "persistent"] },
@@ -281,7 +281,7 @@ export const enchantmentData: FullEnchantmentData = {
             
             // --- Group: A ---
             { id: 803, group: "A", baseText: "Heat Infusion", values: [], tags: ["infusion", "elemental", "heat", "plagued"] },
-            { id: 804, group: "A", baseText: "Cold Infusion", values: [], tags: ["infusion", "elemental", "cold", "plagued"] },
+            { id: 804, group: "A", baseText: "Ice Infusion", values: [], tags: ["infusion", "elemental", "Ice", "plagued"] },
             { id: 805, group: "A", baseText: "Lightning Infusion", values: [], tags: ["infusion", "elemental", "lightning", "plagued"] },
             { id: 806, group: "A", baseText: "Plague Infusion", values: [], tags: ["infusion", "elemental", "plague", "plagued"] },
             { id: 807, group: "A", baseText: "Attack Speed increased by {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 7, max: 10, stat: "attack_speed" }], tags: ["speed", "offensive", "durability_scaling", "persistent", "plagued"] },
@@ -318,7 +318,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 830, group: "H", baseText: "Gain {val1} Health on Staggering an Enemy", values: [{ key: "{val1}", type: "percentage", min: 5, max: 10, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_stagger", "plagued"] },
             { id: 831, group: "H", baseText: "Gain {val1} Health on Charged Attack", values: [{ key: "{val1}", type: "percentage", min: 2, max: 4, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_charged_attack", "plagued"] },
             { id: 832, group: "H", baseText: "Gain {val1} Health on Fatality", values: [{ key: "{val1}", type: "percentage", min: 5, max: 10, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_fatality", "plagued"] },
-            { id: 835, group: "H", baseText: "Gain {val1} Health on Damage Dealt against Frozen Enemies", values: [{ key: "{val1}", type: "percentage", min: 1, max: 2, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_damage", "conditional", "cold", "plagued"] },
+            { id: 835, group: "H", baseText: "Gain {val1} Health on Damage Dealt against Frozen Enemies", values: [{ key: "{val1}", type: "percentage", min: 1, max: 2, stat: "lifesteal" }], tags: ["health", "healing", "defensive", "on_damage", "conditional", "Ice", "plagued"] },
             
             // --- Group: J ---
             { id: 833, group: "J", baseText: "Movement Speed increased by {val1} for 5s after Rune Attack", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "movement_speed" }], tags: ["movement", "speed", "on_rune_attack", "conditional", "plagued"] },
@@ -358,7 +358,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 1001, group: "A", baseText: "Damage increased by up to {val1} based on Durability", values: [{ key: "{val1}", type: "percentage", min: 7, max: 15, stat: "damage" }], tags: ["damage", "offensive", "durability_scaling", "persistent", "plagued"] },
             { id: 1002, group: "A", baseText: "Damage increased by {val1} if no Enemies nearby", values: [{ key: "{val1}", type: "percentage", min: 10, max: 20, stat: "damage" }], tags: ["damage", "offensive", "conditional", "ranged", "plagued"] },
             { id: 1003, group: "A", baseText: "Heat Infusion", values: [], tags: ["infusion", "elemental", "heat", "plagued"] },
-            { id: 1004, group: "A", baseText: "Cold Infusion", values: [], tags: ["infusion", "elemental", "cold", "plagued"] },
+            { id: 1004, group: "A", baseText: "Ice Infusion", values: [], tags: ["infusion", "elemental", "Ice", "plagued"] },
             { id: 1005, group: "A", baseText: "Lightning Infusion", values: [], tags: ["infusion", "elemental", "lightning", "plagued"] },
             { id: 1006, group: "A", baseText: "Plague Infusion", values: [], tags: ["infusion", "elemental", "plague", "plagued"] },
             { id: 1007, group: "A", baseText: "Deal {val1} Damage on Damage Dodged", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "damage" }], tags: ["damage", "offensive", "on_dodge", "plagued"] },
@@ -384,7 +384,7 @@ export const enchantmentData: FullEnchantmentData = {
 
             // --- Group: A ---
             { id: 1102, group: "A", baseText: "Heat Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "heat_damage" }], tags: ["damage", "elemental", "heat", "offensive", "persistent", "plagued"] },
-            { id: 1103, group: "A", baseText: "Cold Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "cold_damage" }], tags: ["damage", "elemental", "cold", "offensive", "persistent", "plagued"] },
+            { id: 1103, group: "A", baseText: "Ice Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "Ice_damage" }], tags: ["damage", "elemental", "Ice", "offensive", "persistent", "plagued"] },
             { id: 1104, group: "A", baseText: "Lightning Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "lightning_damage" }], tags: ["damage", "elemental", "lightning", "offensive", "persistent", "plagued"] },
             { id: 1105, group: "A", baseText: "Plague Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "plague_damage" }], tags: ["damage", "elemental", "plague", "offensive", "persistent", "plagued"] },
 
@@ -415,7 +415,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 1201, group: "None", baseText: "Poise Defense increased by {val1} while Charging", values: [{ key: "{val1}", type: "flat", min: 5, max: 10, stat: "poise_defense" }], tags: ["defense", "poise", "conditional", "plagued"] },
             
             // --- Group: A ---
-            { id: 1202, group: "A", baseText: "Frozen Enemy Armor decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 25, max: 50, stat: "armor_reduction" }], tags: ["debuff", "offensive", "cold", "conditional", "plagued"] },
+            { id: 1202, group: "A", baseText: "Frozen Enemy Armor decreased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 25, max: 50, stat: "armor_reduction" }], tags: ["debuff", "offensive", "Ice", "conditional", "plagued"] },
             { id: 1203, group: "A", baseText: "Deal {val1} Damage on Damage Taken", values: [{ key: "{val1}", type: "percentage", min: 4, max: 15, stat: "thorns_damage" }], tags: ["damage", "thorns", "on_damage_taken", "plagued"] },
             { id: 1204, group: "A", baseText: "Damage increased by {val1} for 6s after Stagger", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "on_stagger", "conditional", "plagued"] },
             { id: 1205, group: "A", baseText: "Burn Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 25, max: 50, stat: "burn_damage" }], tags: ["damage", "elemental", "heat", "offensive", "persistent", "plagued"] },
@@ -492,7 +492,7 @@ export const enchantmentData: FullEnchantmentData = {
             { id: 1403, group: "A", baseText: "Damage increased by {val1} for 6s after Parry", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "damage" }], tags: ["damage", "offensive", "on_parry", "conditional", "plagued"] },
             { id: 1404, group: "A", baseText: "Burn Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "burn_buildup" }], tags: ["buildup", "elemental", "heat", "offensive", "persistent", "plagued"] },
             { id: 1405, group: "A", baseText: "Shock Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "shock_buildup" }], tags: ["buildup", "elemental", "lightning", "offensive", "persistent", "plagued"] },
-            { id: 1406, group: "A", baseText: "Freeze Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "freeze_buildup" }], tags: ["buildup", "elemental", "cold", "offensive", "persistent", "plagued"] },
+            { id: 1406, group: "A", baseText: "Freeze Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "freeze_buildup" }], tags: ["buildup", "elemental", "Ice", "offensive", "persistent", "plagued"] },
             { id: 1407, group: "A", baseText: "Infect Buildup increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 15, max: 30, stat: "infect_buildup" }], tags: ["buildup", "elemental", "plague", "offensive", "persistent", "plagued"] },
             { id: 1408, group: "A", baseText: "Physical Damage increased by {val1}", values: [{ key: "{val1}", type: "percentage", min: 7, max: 25, stat: "physical_damage" }], tags: ["damage", "physical", "offensive", "persistent", "plagued"] },
 
