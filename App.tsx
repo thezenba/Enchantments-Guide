@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import { enchantmentData } from './data/enchantments';
 import { EQUIPMENT_NAME_MAP, groupTitles } from './constants';
 import { TabType, EnchantmentType, EquipmentData, EquipmentType, Enchantment } from './types';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabType>('magical');
@@ -110,36 +111,38 @@ const App: React.FC = () => {
   }, [activeTab, searchTerm, selectedEquipment, selectedGroup, selectedTag]);
 
   return (
-    <div className="min-h-screen text-[#e6e6e6] font-sans antialiased">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <Header />
-        <InfoSection />
-        <Controls
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            selectedEquipment={selectedEquipment}
-            setSelectedEquipment={setSelectedEquipment}
-            selectedGroup={selectedGroup}
-            setSelectedGroup={setSelectedGroup}
-            selectedTag={selectedTag}
-            setSelectedTag={setSelectedTag}
-            equipmentOptions={equipmentOptions}
-            groupOptions={groupOptions}
-            tagOptions={tagOptions}
-        />
-        <main>
-            <EnchantmentGrid 
-                data={filteredData} 
-                tab={activeTab} 
-                searchTerm={searchTerm} 
-                selectedEquipment={selectedEquipment} 
-            />
-        </main>
-        <Footer />
+    <Tooltip.Provider>
+      <div className="min-h-screen text-[#e6e6e6] font-sans antialiased">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <Header />
+          <InfoSection />
+          <Controls
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedEquipment={selectedEquipment}
+              setSelectedEquipment={setSelectedEquipment}
+              selectedGroup={selectedGroup}
+              setSelectedGroup={setSelectedGroup}
+              selectedTag={selectedTag}
+              setSelectedTag={setSelectedTag}
+              equipmentOptions={equipmentOptions}
+              groupOptions={groupOptions}
+              tagOptions={tagOptions}
+          />
+          <main>
+              <EnchantmentGrid 
+                  data={filteredData} 
+                  tab={activeTab} 
+                  searchTerm={searchTerm} 
+                  selectedEquipment={selectedEquipment} 
+              />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </Tooltip.Provider>
   );
 };
 

@@ -1,6 +1,18 @@
 
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { TabType } from '../types';
+import * as Tooltip from '@radix-ui/react-tooltip';
+
+// Hook simples para detectar se a tela é pequena
+function useIsSmallScreen() {
+    const [isSmall, setIsSmall] = React.useState(() => window.innerWidth < 640);
+    React.useEffect(() => {
+        const handler = () => setIsSmall(window.innerWidth < 640);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return isSmall;
+}
 
 interface Option {
     value: string;
@@ -37,6 +49,28 @@ const Controls: React.FC<ControlsProps> = (props) => {
 
     const filterSelectClasses = "w-full md:w-auto md:min-w-[150px] p-2.5 border rounded-md bg-[#1a1a1d] border-[#404040] text-[#e6e6e6] focus:ring-2 focus:ring-[#4a90e2] focus:border-[#4a90e2] text-sm";
 
+    const isSmallScreen = useIsSmallScreen();
+    const [tooltipOpen, setTooltipOpen] = useState(false);
+    const handleInputClick = useCallback(() => {
+        if (isSmallScreen) setTooltipOpen((open) => !open);
+    }, [isSmallScreen]);
+    const handleTooltipOpenChange = useCallback((open: boolean) => {
+        if (!isSmallScreen) setTooltipOpen(open);
+    }, [isSmallScreen]);
+
+    const inputRef = React.useRef<HTMLDivElement>(null);
+    // Fecha o tooltip ao clicar fora em telas pequenas
+    React.useEffect(() => {
+        if (!isSmallScreen || !tooltipOpen) return;
+        function handleClickOutside(e: MouseEvent) {
+            if (inputRef.current && !inputRef.current.contains(e.target as Node)) {
+                setTooltipOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [isSmallScreen, tooltipOpen]);
+
     return (
         <div className="bg-[#2c2f33] p-4 rounded-lg my-6 shadow-lg flex flex-col gap-4">
             {/* Tabs */}
@@ -54,23 +88,31 @@ const Controls: React.FC<ControlsProps> = (props) => {
 
             {/* Filters */}
             <div className="flex flex-col md:flex-row flex-wrap gap-4 items-center">
-                <div className="relative group flex-grow w-full md:w-auto">
-                    <input
-                        type="text"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder="Search 'damage, parry'..."
-                        className="w-full p-2.5 rounded-md border bg-[#1a1a1d] border-[#404040] text-[#e6e6e6] placeholder-gray-500 focus:ring-2 focus:ring-[#4a90e2] focus:border-[#4a90e2] text-sm"
-                    />
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-auto max-w-md p-3 bg-black text-white text-center rounded-md text-sm opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 shadow-lg">
-                        Use comma-separated keywords to find items with all specified tags. Example: <span className="text-cyan-400 font-bold">"focus, gain, durability."</span>
-                        <br />
-                        Also note that you can write incomplete words.
-                        Example: <span className="text-cyan-400 font-bold">"Hea, dam"</span> to find everything related to <span className="text-orange-400 font-bold">"Heat Damage."</span>
-                        <br />
-                        Even a single letter works.
-                    </div>
-                </div>
+                <Tooltip.Root open={isSmallScreen ? tooltipOpen : undefined} onOpenChange={handleTooltipOpenChange}>
+                    <Tooltip.Trigger asChild>
+                        <div ref={inputRef} className="relative flex-grow w-full md:w-auto">
+                            <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder="Search 'damage, parry'..."
+                                className="w-full p-2.5 rounded-md border bg-[#1a1a1d] border-[#404040] text-[#e6e6e6] placeholder-gray-500 focus:ring-2 focus:ring-[#4a90e2] focus:border-[#4a90e2] text-sm"
+                                onClick={handleInputClick}
+                            />
+                        </div>
+                    </Tooltip.Trigger>
+                    <Tooltip.Portal>
+                        <Tooltip.Content side="top" align="center" sideOffset={8} className="w-[90vw] max-w-xs sm:max-w-md p-3 bg-black text-white text-center rounded-md text-sm z-10 shadow-lg break-words">
+                            Use comma-separated keywords to find items with all specified tags. Example: <span className="text-cyan-400 font-bold">"focus, gain, durability."</span>
+                            <br />
+                            Also note that you can write incomplete words.
+                            Example: <span className="text-cyan-400 font-bold">"Hea, dam"</span> to find everything related to <span className="text-orange-400 font-bold">"Heat Damage."</span>
+                            <br />
+                            Even a single letter works.
+                            <Tooltip.Arrow className="fill-black" />
+                        </Tooltip.Content>
+                    </Tooltip.Portal>
+                </Tooltip.Root>
                 <select value={selectedEquipment} onChange={(e) => setSelectedEquipment(e.target.value)} className={filterSelectClasses}>
                     {equipmentOptions.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                 </select>
