@@ -11,18 +11,6 @@ export const EQUIPMENT_NAME_MAP: Record<EquipmentType, string> = {
     gloves: 'Gloves'
 };
 
-export const GROUP_TOOLTIPS: Record<string, string> = {
-    "A": "Grouping A: Cannot be on the same item with other enchants from this group.",
-    "B": "Grouping B: Cannot be on the same item with other enchants from this group.",
-    "C": "Grouping C: Cannot be on the same item with other enchants from this group.",
-    "D": "Grouping D: Cannot be on the same item with other enchants from this group.",
-    "E": "Grouping E: Cannot be on the same item with other enchants from this group.",
-    "H": "Grouping H: Cannot be on the same item with other enchants from this group.",
-    "J": "Grouping J: Cannot be on the same item with other enchants from this group.",
-    "K": "Grouping K: Cannot be on the same item with other enchants from this group.",
-    "L": "Grouping L: Cannot be on the same item with other enchants from this group.",
-};
-
 export const ATTRIBUTE_KEYWORDS: Record<string, RegExp[]> = {
     'text-[#fbbc04]': [/focus/gi],
     'text-[#ea9999]': [/health/gi, /healing/gi, /regainable/gi],
