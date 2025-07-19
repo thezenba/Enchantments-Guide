@@ -1,10 +1,19 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { GROUP_BADGE_COLORS, groupTitles, groupSummaries } from '../constants';
 import { highlightText } from '../utils/textUtils';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
-// Evento customizado para fechar tooltips
-const TOOLTIP_EVENT = 'close-group-badge-tooltips';
+// Hook simples para detectar se a tela é pequena
+function useIsSmallScreen() {
+  const [isSmall, setIsSmall] = React.useState(() => window.innerWidth < 640);
+  React.useEffect(() => {
+    const handler = () => setIsSmall(window.innerWidth < 640);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return isSmall;
+}
 
 interface GroupBadgeProps {
   group: string;
@@ -19,75 +28,54 @@ const GroupBadge: React.FC<GroupBadgeProps> = ({ group }) => {
   const badgeTitle = groupTitles[group] || group;
   const tooltipText = groupSummaries[group] || `Este item pertence ao Grupo ${group}.`;
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  const closeTimer = useRef<NodeJS.Timeout | null>(null);
+  const isSmallScreen = useIsSmallScreen();
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   const badgeRef = useRef<HTMLSpanElement>(null);
 
-  const clearCloseTimer = () => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-      closeTimer.current = null;
+  const handleBadgeClick = useCallback((e: React.MouseEvent) => {
+    if (isSmallScreen) {
+      e.stopPropagation();
+      setTooltipOpen((open) => !open);
     }
-  };
+  }, [isSmallScreen]);
 
-  const handleBadgeClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!showTooltip) {
-      window.dispatchEvent(new CustomEvent(TOOLTIP_EVENT));
-    }
-    setShowTooltip((prev) => !prev);
-    clearCloseTimer();
-  };
+  const handleTooltipOpenChange = useCallback((open: boolean) => {
+    if (!isSmallScreen) setTooltipOpen(open);
+  }, [isSmallScreen]);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (!(e.target as HTMLElement).closest('.group-badge-clickable')) {
-      clearCloseTimer();
-      closeTimer.current = setTimeout(() => setShowTooltip(false), 2000);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    clearCloseTimer();
-    closeTimer.current = setTimeout(() => setShowTooltip(false), 2000);
-  };
-
-  const handleMouseEnter = () => {
-    clearCloseTimer();
-  };
-
+  // Fecha o tooltip ao clicar fora em telas pequenas
   React.useEffect(() => {
-    const closeTooltip = () => setShowTooltip(false);
-    window.addEventListener(TOOLTIP_EVENT, closeTooltip);
-    if (showTooltip) {
-      document.addEventListener('mousedown', handleClickOutside);
+    if (!isSmallScreen || !tooltipOpen) return;
+    function handleClickOutside(e: MouseEvent) {
+      if (badgeRef.current && !badgeRef.current.contains(e.target as Node)) {
+        setTooltipOpen(false);
+      }
     }
-    return () => {
-      window.removeEventListener(TOOLTIP_EVENT, closeTooltip);
-      document.removeEventListener('mousedown', handleClickOutside);
-      clearCloseTimer();
-    };
-  }, [showTooltip]);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isSmallScreen, tooltipOpen]);
 
   return (
-    <div className="relative flex items-center">
-      <span
-        ref={badgeRef}
-        className={`group-badge-clickable transition-all duration-150 text-xs font-bold text-black py-0.5 px-2 rounded-full cursor-pointer select-none ${badgeColor} hover:scale-110 hover:shadow-lg hover:text-[#4a90e2] active:scale-105`}
-        onClick={handleBadgeClick}
-        tabIndex={0}
-        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleBadgeClick(e as any); }}
-        aria-label={`Mostrar explicação do grupo ${badgeTitle}`}
-        onMouseLeave={handleMouseLeave}
-        onMouseEnter={handleMouseEnter}
-      >
-        {badgeTitle}
-      </span>
-      {showTooltip && (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 p-2 bg-black text-white text-center rounded-md text-sm z-10 shadow-lg border border-[#404040] animate-fade-in">
+    <Tooltip.Root open={isSmallScreen ? tooltipOpen : undefined} onOpenChange={handleTooltipOpenChange}>
+      <Tooltip.Trigger asChild>
+        <span
+          ref={badgeRef}
+          className={`group-badge-clickable transition-all duration-150 text-xs font-bold text-black py-0.5 px-2 rounded-full cursor-pointer select-none ${badgeColor} hover:scale-110 hover:shadow-lg hover:text-[#4a90e2] active:scale-105`}
+          onClick={handleBadgeClick}
+          tabIndex={0}
+          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') handleBadgeClick(e as any); }}
+          aria-label={`Mostrar explicação do grupo ${badgeTitle}`}
+        >
+          {badgeTitle}
+        </span>
+      </Tooltip.Trigger>
+      <Tooltip.Portal>
+        <Tooltip.Content side="top" align="center" sideOffset={8} className="px-2 py-1 bg-black text-white text-center rounded-md text-sm z-10 shadow-lg border border-[#404040] break-words animate-fade-in">
           <span dangerouslySetInnerHTML={{ __html: highlightText(tooltipText, '') }} />
-        </div>
-      )}
-    </div>
+          <Tooltip.Arrow className="fill-black" />
+        </Tooltip.Content>
+      </Tooltip.Portal>
+    </Tooltip.Root>
   );
 };
 
