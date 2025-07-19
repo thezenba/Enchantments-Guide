@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { GROUP_BADGE_COLORS, groupTitles, groupExplanations } from '../constants';
+import { GROUP_BADGE_COLORS, groupTitles, groupSummaries } from '../constants';
 
 interface GroupBadgeProps {
   group: string;
@@ -13,7 +13,7 @@ const GroupBadge: React.FC<GroupBadgeProps> = ({ group }) => {
 
   const badgeColor = GROUP_BADGE_COLORS[group] || 'bg-gray-400';
   const badgeTitle = groupTitles[group] || group;
-  const tooltipText = groupExplanations[group] || `This item belongs to Group ${group}.`;
+  const tooltipText = groupSummaries[group] || `Este item pertence ao Grupo ${group}.`;
 
   const [showTooltip, setShowTooltip] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);

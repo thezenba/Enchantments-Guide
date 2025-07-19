@@ -51,3 +51,15 @@ export const groupExplanations: Record<string, string> = {
   K: "Weight - This group has a singular utility focus: reducing the item's weight, which can help with overall equipment load management.",
   L: "Armor - This group is focused on reducing incoming damage. It includes enchantments that increase armor and decrease damage taken based on various conditions, such as durability, low health, or the number of nearby enemies."
 };
+
+export const groupSummaries: Record<string, string> = {
+  A: "Increases damage in various ways.",
+  B: "Focus manipulation and gain.",
+  C: "Stamina and recovery improvements.",
+  D: "Increases or protects the item's durability.",
+  E: "Increases resistances and defense.",
+  H: "Increases health, healing, or lifesteal.",
+  J: "Increases movement speed.",
+  K: "Reduces item weight.",
+  L: "Increases armor or reduces damage taken."
+};
