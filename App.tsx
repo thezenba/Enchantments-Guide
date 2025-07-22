@@ -5,7 +5,7 @@ import InfoSection from './components/InfoSection';
 import Controls from './components/Controls';
 import EnchantmentGrid from './components/EnchantmentGrid';
 import Footer from './components/Footer';
-import { enchantmentData } from './data/enchantments';
+import { enchantmentData } from './src/data/enchantments';
 import { EQUIPMENT_NAME_MAP, groupTitles } from './constants';
 import { TabType, EnchantmentType, EquipmentData, EquipmentType, Enchantment } from './types';
 import * as Tooltip from '@radix-ui/react-tooltip';

@@ -1,4 +1,4 @@
-import { FullEnchantmentData } from '../types';
+import { FullEnchantmentData } from '../../types';
 
 export const enchantmentData: FullEnchantmentData = {
     magicalEnchantments: {
